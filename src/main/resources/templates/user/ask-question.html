@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Ask a Question - DemocraNet</title>
+    <link data-th-href="@{'/css/output.css'}" rel="stylesheet"/>
+</head>
+
+<body class="dark:bg-black dark:text-white">
+<div class="sm:w-full md:w-3/4 lg:w-2/3 p-4 mx-auto space-y-6" id="content">
+    <!-- Ask Question Form -->
+    <div>
+        <h1 class="text-3xl font-bold mb-6 text-blue-700 dark:text-blue-400">Ask Your Question</h1>
+
+        <form th:object="${QuestionDTO}" data-th-action="@{/user/question/submit-question}" method="post" class="space-y-6">
+            <div>
+                <label for="question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Question</label>
+                <input type="text" name="question" id="question" th:field="*{title}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Why hasn't the road in my area been fixed?" required>
+            </div>
+
+            <div>
+                <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Details</label>
+                <textarea th:field="*{details}" id="details" name="details" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Provide more context about your question..."></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Region</label>
+                    <select th:field="*{region}" id="region" name="region" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected value="">Choose a region</option>
+                        <option value="mumbai-south">Mumbai South</option>
+                        <option value="mumbai-north">Mumbai North</option>
+                        <option value="mumbai-central">Mumbai Central</option>
+                        <option value="mumbai-north-west">Mumbai North West</option>
+                        <option value="mumbai-north-east">Mumbai North East</option>
+                        <option value="thane">Thane</option>
+                        <option value="pune">Pune</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="party" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Party (Optional)</label>
+                    <select id="party" name="party" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected value="">Choose a party</option>
+                        <option value="bjp">BJP</option>
+                        <option value="congress">Congress</option>
+                        <option value="shiv-sena">Shiv Sena</option>
+                        <option value="ncp">NCP</option>
+                        <option value="aap">AAP</option>
+                        <option value="mns">MNS</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label for="mla" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select MLA (Optional)</label>
+                <select th:field="*{official}" id="mla" name="mla" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="">Choose an MLA</option>
+                    <option value="mla-1">Aditya Thackeray - Shiv Sena</option>
+                    <option value="mla-2">Ameet Satam - BJP</option>
+                    <option value="mla-3">Priya Dutt - Congress</option>
+                    <option value="mla-4">Jitendra Awhad - NCP</option>
+                    <option value="mla-5">Supriya Sule - NCP</option>
+                    <option value="mla-6">Rajesh Tope - Shiv Sena</option>
+                </select>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">MLAs will be filtered based on your selected region</p>
+            </div>
+
+            <div>
+                <label  for="tags" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags (Optional)</label>
+                <input th:field="*{tag}" type="text" name="tags" id="tags" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="infrastructure, water, roads, etc. (comma separated)">
+            </div>
+
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required>
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I agree to the <a class="font-medium text-blue-600 hover:underline dark:text-blue-500" href="#">Terms and Conditions</a> and confirm this question does not contain profanity or unethical content</label>
+                </div>
+            </div>
+
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit Question</button>
+        </form>
+    </div>
+
+    <!-- Guidelines Section -->
+    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+        <h2 class="text-xl font-semibold mb-4 text-blue-700 dark:text-blue-400">Guidelines for Asking Questions</h2>
+        <ul class="space-y-2 list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li>Be specific and clear in your question</li>
+            <li>Provide relevant details to give context</li>
+            <li>Avoid personal attacks or offensive language</li>
+            <li>Focus on issues that affect your community</li>
+            <li>Check if your question has already been asked</li>
+            <li>Tag the appropriate MLA, region, or party for better visibility</li>
+        </ul>
+    </div>
+
+    <!-- Similar Questions -->
+    <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+        <h2 class="text-xl font-semibold mb-4 text-blue-700 dark:text-blue-400">Similar Questions</h2>
+        <div class="space-y-3">
+            <div class="p-3 border-l-4 border-blue-500 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">When will the potholes on Marine Drive be fixed?</a>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mumbai South • 120 upvotes</p>
+            </div>
+            <div class="p-3 border-l-4 border-blue-500 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Why are the roads in Andheri still damaged after last monsoon?</a>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mumbai North West • 89 upvotes</p>
+            </div>
+            <div class="p-3 border-l-4 border-blue-500 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">What is the timeline for repairing Bandra-Worli Sea Link access roads?</a>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mumbai South • 76 upvotes</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Dynamic MLA filtering based on region selection
+    const regionSelect = document.getElementById('region');
+    const mlaSelect = document.getElementById('mla');
+    const partySelect = document.getElementById('party');
+
+    regionSelect.addEventListener('change', function() {
+        // This would be replaced with an actual API call to get MLAs by region
+        console.log('Region changed to: ' + this.value);
+        // Example of dynamic MLA filtering
+        if(this.value === 'mumbai-south') {
+            // Clear and populate with Mumbai South MLAs
+            mlaSelect.innerHTML = `
+                <option value="">Choose an MLA</option>
+                <option value="mla-1">Aditya Thackeray - Shiv Sena</option>
+                <option value="mla-6">Rajesh Tope - Shiv Sena</option>
+                <option value="mla-7">Arvind Sawant - Shiv Sena</option>
+            `;
+        } else if(this.value === 'mumbai-north-west') {
+            // Clear and populate with Mumbai North West MLAs
+            mlaSelect.innerHTML = `
+                <option value="">Choose an MLA</option>
+                <option value="mla-2">Ameet Satam - BJP</option>
+                <option value="mla-8">Gajanan Kirtikar - Shiv Sena</option>
+            `;
+        } else if(this.value === 'thane') {
+            // Clear and populate with Thane MLAs
+            mlaSelect.innerHTML = `
+                <option value="">Choose an MLA</option>
+                <option value="mla-4">Jitendra Awhad - NCP</option>
+                <option value="mla-9">Eknath Shinde - Shiv Sena</option>
+            `;
+        } else if(this.value === 'pune') {
+            // Clear and populate with Pune MLAs
+            mlaSelect.innerHTML = `
+                <option value="">Choose an MLA</option>
+                <option value="mla-5">Supriya Sule - NCP</option>
+                <option value="mla-10">Murlidhar Mohol - BJP</option>
+            `;
+        } else {
+            // Default or empty selection
+            mlaSelect.innerHTML = `
+                <option value="">Choose an MLA</option>
+                <option value="mla-1">Aditya Thackeray - Shiv Sena</option>
+                <option value="mla-2">Ameet Satam - BJP</option>
+                <option value="mla-3">Priya Dutt - Congress</option>
+                <option value="mla-4">Jitendra Awhad - NCP</option>
+                <option value="mla-5">Supriya Sule - NCP</option>
+                <option value="mla-6">Rajesh Tope - Shiv Sena</option>
+            `;
+        }
+    });
+
+    // Filter MLAs by party selection
+    partySelect.addEventListener('change', function() {
+        const selectedParty = this.value;
+        const selectedRegion = regionSelect.value;
+
+        console.log('Party changed to: ' + selectedParty);
+
+        // This is a simplified example - in a real app, you'd make an API call
+        // to filter MLAs by both region and party
+    });
+</script>
+</body>
+</html>

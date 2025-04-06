@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>DemocraNet - Connect with Your Representatives</title>
+    <link data-th-href="@{'/css/output.css'}" rel="stylesheet"/>
+</head>
+
+<body class="dark:bg-black dark:text-white">
+<div class="bg-gray-100 dark:bg-gray-800 sm:w-full md:w-3/4 lg:w-2/3 p-4 mx-auto m-4 space-y-4 items-center dark:shadow-white"
+     id="content">
+    <!-- Hero Section -->
+    <header class="bg-white dark:bg-gray-900 text-center py-16 px-4 rounded-lg shadow-md">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-700 dark:text-blue-400">Your Voice Matters</h1>
+        <p class="mt-4 mb-6 text-lg text-gray-700 dark:text-gray-300">Ask questions to your elected representatives. Let them hear your concerns.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a class="text-white bg-blue-800 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:bg-gradient-to-br hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-6 py-3 text-center transition-all duration-300 transform hover:scale-105"
+               data-th-href="@{/user/ask}">Ask a Question</a>
+            
+            <a class="text-white  bg-yellow-500 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br hover:from-yellow-400 hover:via-yellow-500 hover:to-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80 font-medium rounded-lg text-lg px-6 py-3 text-center transition-all duration-300 transform hover:scale-105" 
+               data-th-href="@{/browse}">Browse Questions</a>
+        </div>
+    </header>
+
+    <!-- How It Works -->
+    <section class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-3xl font-semibold text-center mb-8 text-blue-700 dark:text-blue-400">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center p-4">
+                <div class="bg-blue-100 dark:bg-blue-800 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-blue-700 dark:text-blue-300">1</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Ask a Question</h3>
+                <p class="text-gray-600 dark:text-gray-400">Post your question about local issues and tag your MLA, region, or political party.</p>
+            </div>
+            <div class="text-center p-4">
+                <div class="bg-blue-100 dark:bg-blue-800 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-blue-700 dark:text-blue-300">2</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Get Support</h3>
+                <p class="text-gray-600 dark:text-gray-400">Other citizens upvote questions they think are important, bringing attention to pressing issues.</p>
+            </div>
+            <div class="text-center p-4">
+                <div class="bg-blue-100 dark:bg-blue-800 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-blue-700 dark:text-blue-300">3</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Get Answers</h3>
+                <p class="text-gray-600 dark:text-gray-400">MLAs see questions directed to them, and journalists find important topics for interviews.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Questions Section -->
+    <section class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 mb-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">Trending Questions</h2>
+            <a data-th-href="@{/trending}" class="text-blue-600 dark:text-blue-400 hover:underline">View All</a>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Question Card -->
+            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-150">
+                <div class="flex items-start">
+                    <div class="mr-4 flex flex-col items-center">
+                        <button class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </button>
+                        <span class="font-bold text-lg">245</span>
+                        <button class="text-gray-500 hover:text-red-600 dark:hover:text-red-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Why hasn't the road in Mumbai South been fixed for 3 months?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">The potholes on Marine Drive have caused multiple accidents already. When will this be addressed?</p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Mumbai South</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Shiv Sena</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Aditya Thackeray</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <span>Posted by Rahul M.</span>
+                            <span class="mx-2">•</span>
+                            <span>2 days ago</span>
+                            <span class="mx-2">•</span>
+                            <span>32 comments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-150">
+                <div class="flex items-start">
+                    <div class="mr-4 flex flex-col items-center">
+                        <button class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </button>
+                        <span class="font-bold text-lg">189</span>
+                        <button class="text-gray-500 hover:text-red-600 dark:hover:text-red-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">When will the water supply be restored in Andheri East?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">We've been facing water cuts for over a week now. No clear communication from authorities.</p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Mumbai North West</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">BJP</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Ameet Satam</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <span>Posted by Priya K.</span>
+                            <span class="mx-2">•</span>
+                            <span>3 days ago</span>
+                            <span class="mx-2">•</span>
+                            <span>18 comments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-150">
+                <div class="flex items-start">
+                    <div class="mr-4 flex flex-col items-center">
+                        <button class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </button>
+                        <span class="font-bold text-lg">156</span>
+                        <button class="text-gray-500 hover:text-red-600 dark:hover:text-red-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">What's being done about the rising pollution levels in Thane?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">Air quality has been deteriorating for months. We need concrete action plans.</p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Thane</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">NCP</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Jitendra Awhad</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <span>Posted by Anil S.</span>
+                            <span class="mx-2">•</span>
+                            <span>4 days ago</span>
+                            <span class="mx-2">•</span>
+                            <span>27 comments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a data-th-href="@{/browse}" class="inline-flex items-center py-2.5 px-5 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                View More Questions
+                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-center mb-8 text-blue-700 dark:text-blue-400">Making an Impact</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg text-center">
+                <h3 class="text-3xl font-bold text-blue-700 dark:text-blue-300">5,234+</h3>
+                <p class="text-gray-700 dark:text-gray-300">Questions Asked</p>
+            </div>
+            <div class="bg-green-50 dark:bg-green-900 p-4 rounded-lg text-center">
+                <h3 class="text-3xl font-bold text-green-700 dark:text-green-300">248</h3>
+                <p class="text-gray-700 dark:text-gray-300">MLAs Participating</p>
+            </div>
+            <div class="bg-yellow-50 dark:bg-yellow-900 p-4 rounded-lg text-center">
+                <h3 class="text-3xl font-bold text-yellow-700 dark:text-yellow-300">1,876</h3>
+                <p class="text-gray-700 dark:text-gray-300">Issues Resolved</p>
+            </div>
+            <div class="bg-purple-50 dark:bg-purple-900 p-4 rounded-lg text-center">
+                <h3 class="text-3xl font-bold text-purple-700 dark:text-purple-300">42</h3>
+                <p class="text-gray-700 dark:text-gray-300">Media Partners</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured MLAs -->
+    <section class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-center mb-8 text-blue-700 dark:text-blue-400">Active Representatives</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- MLA Card -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                <img class="w-20 h-20 rounded-full mx-auto mb-3" src="https://randomuser.me/api/portraits/men/32.jpg" alt="MLA Photo">
+                <h3 class="text-lg text-gray-900 dark:text-white font-semibold">Rajesh Tope</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mumbai South</p>
+                <p class="text-sm text-purple-600 dark:text-purple-400">Shiv Sena</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Answered: 87 questions</p>
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline text-sm mt-2 inline-block">View Profile</a>
+            </div>
+            <!-- MLA Card -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                <img class="w-20 h-20 rounded-full mx-auto mb-3" src="https://randomuser.me/api/portraits/women/44.jpg" alt="MLA Photo">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Priya Dutt</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mumbai North Central</p>
+                <p class="text-sm text-purple-600 dark:text-purple-400">Congress</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Answered: 65 questions</p>
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline text-sm mt-2 inline-block">View Profile</a>
+            </div>
+            <!-- MLA Card -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                <img class="w-20 h-20 rounded-full mx-auto mb-3" src="https://randomuser.me/api/portraits/men/67.jpg" alt="MLA Photo">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ameet Satam</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mumbai North West</p>
+                <p class="text-sm text-purple-600 dark:text-purple-400">BJP</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Answered: 59 questions</p>
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline text-sm mt-2 inline-block">View Profile</a>
+            </div>
+            <!-- MLA Card -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                <img class="w-20 h-20 rounded-full mx-auto mb-3" src="https://randomuser.me/api/portraits/women/28.jpg" alt="MLA Photo">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Supriya Sule</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Pune</p>
+                <p class="text-sm text-purple-600 dark:text-purple-400">NCP</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Answered: 52 questions</p>
+                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline text-sm mt-2 inline-block">View Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r bg-blue-800 ounded-lg shadow-md p-8 text-white text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to make your voice heard?</h2>
+        <p class="text-lg mb-6">Join thousands of citizens who are making a difference in their communities by asking important questions to their representatives.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a class="text-blue-700 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center" data-th-href="@{/registration}">Sign Up Now</a>
+            <a class="text-white bg-transparent border border-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center" data-th-href="@{/about}">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Media Coverage -->
+    <section class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-center mb-8 text-blue-700 dark:text-blue-400">Media Partners</h2>
+        <div class="flex flex-wrap justify-center items-center gap-8">
+            <div class="rounded colur bg-orange-300 hover:grayscale-100 transition duration-300">
+                <img src="https://placehold.co/120x60?text=The+Wire" alt="The Wire" class="rounded  h-12">
+            </div>
+            <div class="grayscale hover:grayscale-0 transition duration-300">
+                <img src="https://placehold.co/120x60?text=Newslaundry" alt="Newslaundry" class="h-12 rounded  ">
+            </div>
+            <div class="grayscale hover:grayscale-0 transition duration-300">
+                <img src="https://placehold.co/120x60?text=Scroll.in" alt="Scroll.in" class="h-12  rounded  ">
+            </div>
+            <div class="grayscale hover:grayscale-0 transition duration-300">
+                <img src="https://placehold.co/120x60?text=The+DeshBhakt" alt="The DeshBhakt (Akash Banerjee)" class="h-12 rounded  ">
+            </div>
+            <div class="grayscale hover:grayscale-0 transition duration-300">
+                <img src="https://placehold.co/120x60?text=Ravish+Kumar+Official" alt="Ravish Kumar Official" class="h-12 rounded  ">
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    console.log("Home page loaded successfully!");
+</script>
+</body>
+</html>
